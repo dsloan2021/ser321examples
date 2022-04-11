@@ -1,4 +1,4 @@
-#### Purpose:
+## Purpose:
 Very basic peer-2-peer for a chat. All peers can communicate with each other. 
 
 Each peer is client and server at the same time. 
@@ -12,7 +12,7 @@ Client Thread constantly listens.
 
 ServerThread writes every registered listener (the other peers). 
 
-### How to run it
+## How to run it
 
 Arguments are name and port. Start 2 to many peers each having a unique port number. 
 
@@ -24,9 +24,7 @@ localhost:8000 localhost:8001
 
 You will then be listening to these two peers only. You cannot change who you listen to, you would need to start again. If you enter wrong info the program quits. I know userfriendly, feel free to change that if you like :-)
 
-
-
-
+## From Submission page
 
 1. Come up with a way, that a new node can be added at any time and will automatically register with the other nodes (more explanation later)
 
@@ -43,7 +41,8 @@ integrated into the network.
 
 Describe in your Readme.md for this task what you decided to do.
 
+## Tips (for this and activity 2):
 
-tips:
 add a bunch of print statements
+
 draw out the communications that should be made
