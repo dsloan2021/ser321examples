@@ -11,6 +11,7 @@ Then chatting can start if everyone did this.
 Client Thread constantly listens.
 
 ServerThread writes every registered listener (the other peers). 
+</br></br>
 
 ## How to run it
 
@@ -23,6 +24,7 @@ enter in one line all the host:port combination you want to listen to, e.g.
 localhost:8000 localhost:8001
 
 You will then be listening to these two peers only. You cannot change who you listen to, you would need to start again. If you enter wrong info the program quits. I know userfriendly, feel free to change that if you like :-)
+</br></br>
 
 ## From Submission page
 
@@ -40,6 +42,7 @@ It is for you to figure out or come up with a way you like so that this new node
 integrated into the network.
 
 Describe in your Readme.md for this task what you decided to do.
+</br></br>
 
 ## Tips (for this and activity 2):
 
