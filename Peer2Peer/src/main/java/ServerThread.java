@@ -1,3 +1,10 @@
+/*
+	1. Come up with a way, that a new node can be added at any time and will automatically 
+		register with the other nodes (more explanation later)
+
+	2. A node can recognize if another node is not responding anymore (offline) and let the
+		other nodes know that that peer is gone
+*/
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
