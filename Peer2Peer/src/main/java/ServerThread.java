@@ -1,10 +1,3 @@
-/*
-	1. Come up with a way, that a new node can be added at any time and will automatically 
-		register with the other nodes (more explanation later)
-
-	2. A node can recognize if another node is not responding anymore (offline) and let the
-		other nodes know that that peer is gone
-*/
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -36,6 +29,7 @@ public class ServerThread extends Thread{
 				Socket sock = serverSocket.accept();
 				listeningSockets.add(sock);
 			}
+			//listeningSockets
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,9 +43,17 @@ public class ServerThread extends Thread{
 			for (Socket s : listeningSockets) {
 				PrintWriter out = new PrintWriter(s.getOutputStream(), true);
 				out.println(message);
-		     }
+			 }
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}	
 }
+
+/*
+	1. Come up with a way, that a new node can be added at any time and will automatically 
+		register with the other nodes (more explanation later)
+
+	2. A node can recognize if another node is not responding anymore (offline) and let the
+		other nodes know that that peer is gone
+*/
