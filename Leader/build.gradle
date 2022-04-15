@@ -5,10 +5,64 @@ repositories {
     mavenCentral()
 }
 
-//dependencies {
-//    //compile group: 'org.json', name: 'json', version: '20200518'
-//    implementation 'org.json:json:20200518'
-//}
+dependencies {
+    compile group: 'org.json', name: 'json', version: '20200518'
+    //implementation 'org.json:json:20200518'
+}
+
+def Pmoney = 1000
 
 //define main class
 //mainClassName = 'SimpleServer'
+
+task leader(type: JavaExec) {
+  description 'Creates a leader node'
+
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'Node'
+  standardInput = System.in
+
+  args 'Leader' // username
+  args '8000' // port
+
+}
+
+task node1(type: JavaExec) {
+  description 'Runs a peer'
+
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'Node'
+  standardInput = System.in
+
+  args 'Node1' // username
+  args '8001' // port
+  args Pmoney // starting money
+}
+
+task node2(type: JavaExec) {
+  description 'Runs a peer'
+
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'Node'
+  standardInput = System.in
+
+  args 'Node2' // username
+  args '8002' // port
+  args Pmoney = 2000 // starting money
+}
+
+task client(type: JavaExec) {
+  description 'Runs the client'
+
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'Client'
+  standardInput = System.in
+
+  args 'Node2' // username
+  args '8002' // port
+  args Pmoney = 2000 // starting money
+}
