@@ -1,5 +1,4 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
-    "editor.folding": true,
-    "java.project.sourcePaths": []
+    "editor.folding": true
 }

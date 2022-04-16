@@ -6,14 +6,17 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
+import java.lang.Math;
 
 import org.json.*;
 
 public class Client {
-    private int clientID = 1000000000;
+    private int clientID;
+	private BufferedReader bufferedReader;
     
     public Client() {
-        this.clientID = 1000000000;
+        clientID = (int) (10000 * Math.random());
     } // end constructor
 } // end Client

@@ -6,26 +6,34 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.json', name: 'json', version: '20200518'
-    //implementation 'org.json:json:20200518'
+    //compile group: 'org.json', name: 'json', version: '20200518'
+    implementation 'org.json:json:20200518'
 }
 
-def Pmoney = 1000
+def money = "1000"
+def money2 = "2000"
+
+task arguments {
+    if (project.hasProperty("money")) {
+      money = project.getProperty("money")
+      money2 = project.getProperty("money")
+    }
+}
 
 //define main class
-//mainClassName = 'SimpleServer'
+mainClassName = 'Runner'
 
 task leader(type: JavaExec) {
   description 'Creates a leader node'
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'Node'
+  main = 'Runner'
   standardInput = System.in
 
-  args 'Leader' // username
   args '8000' // port
-
+  args money = 0
+  args true
 }
 
 task node1(type: JavaExec) {
@@ -33,12 +41,12 @@ task node1(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'Node'
+  main = 'Runner'
   standardInput = System.in
 
-  args 'Node1' // username
   args '8001' // port
-  args Pmoney // starting money
+  args money // starting money
+  args false
 }
 
 task node2(type: JavaExec) {
@@ -46,12 +54,12 @@ task node2(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'Node'
+  main = 'Runner'
   standardInput = System.in
 
-  args 'Node2' // username
   args '8002' // port
-  args Pmoney = 2000 // starting money
+  args money2 // starting money
+  args false // leader
 }
 
 task client(type: JavaExec) {
@@ -62,7 +70,5 @@ task client(type: JavaExec) {
   main = 'Client'
   standardInput = System.in
 
-  args 'Node2' // username
-  args '8002' // port
-  args Pmoney = 2000 // starting money
+  args '8003' // port
 }
