@@ -33,7 +33,6 @@ task leader(type: JavaExec) {
 
   args '8000' // port
   args money = 0
-  args true
 }
 
 task node1(type: JavaExec) {
@@ -46,7 +45,6 @@ task node1(type: JavaExec) {
 
   args '8001' // port
   args money // starting money
-  args false
 }
 
 task node2(type: JavaExec) {
@@ -59,7 +57,6 @@ task node2(type: JavaExec) {
 
   args '8002' // port
   args money2 // starting money
-  args false // leader
 }
 
 task client(type: JavaExec) {
