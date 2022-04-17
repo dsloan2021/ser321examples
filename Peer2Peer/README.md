@@ -19,7 +19,7 @@ ServerThread writes every registered listener (the other peers).
 
 Arguments are name and port. Start 2 to many peers each having a unique port number. 
 
-gradle runPeer --args "Name 7000" --console=plain -q
+gradle runPeer --args "Name 8000" --console=plain -q
 
 When asked who "> Who do you want to listen to? Enter host:port"
 enter in one line all the host:port combination you want to listen to, e.g.
@@ -48,11 +48,3 @@ integrated into the network.
 
 Describe in your Readme.md for this task what you decided to do.
 </br></br></br>
-
-
-
-## Tips (for this and activity 2):
-
-add a bunch of print statements
-
-draw out the communications that should be made
