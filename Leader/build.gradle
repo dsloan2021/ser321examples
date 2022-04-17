@@ -28,7 +28,7 @@ task leader(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'Runner'
+  main = 'Leader'
   standardInput = System.in
 
   args '8000' // port
@@ -36,11 +36,11 @@ task leader(type: JavaExec) {
 }
 
 task node1(type: JavaExec) {
-  description 'Runs a peer'
+  description 'Runs a node'
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'Runner'
+  main = 'Node'
   standardInput = System.in
 
   args '8001' // port
@@ -48,11 +48,11 @@ task node1(type: JavaExec) {
 }
 
 task node2(type: JavaExec) {
-  description 'Runs a peer'
+  description 'Runs a node'
 
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'Runner'
+  main = 'Node'
   standardInput = System.in
 
   args '8002' // port
