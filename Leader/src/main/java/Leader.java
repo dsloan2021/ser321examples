@@ -16,29 +16,29 @@ import org.json.*;
 public class Leader extends Thread {
     private BufferedReader bufferedReader;
     public int owes;
-    public ArrayList<Client> clientList = new ArrayList<Client>();
-    public ArrayList<Node> nodeList = new ArrayList<Node>();
+    public static ArrayList<Client> clientList = new ArrayList<Client>();
+    public static ArrayList<Node> nodeList = new ArrayList<Node>();
 
-	private static Runner nodeLeader;
-	private static ServerSocket serverSocket;
+    private static Leader nodeLeader;
+    private static ServerSocket serverSocket;
 
     public Leader(String portNum) throws IOException {
-		serverSocket = new ServerSocket(Integer.valueOf(portNum));
-	} // end constructor
+        serverSocket = new ServerSocket(Integer.valueOf(portNum));
+    } // end constructor
 
     public static void main(String[] args) throws IOException {
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-		String port = args[0];
-		int money = Integer.parseInt(args[1]);
-		Node node = new Node(money);
-		nodeList.add(node);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String port = args[0];
+        int money = Integer.parseInt(args[1]);
+        Node node = new Node(money);
+        nodeList.add(node);
 
-		serverSocket = new ServerSocket(8000);
-		Socket sock = serverSocket.accept();
+        serverSocket = new ServerSocket(8000);
+        Socket sock = serverSocket.accept();
 
-		nodeLeader = new Leader(port);
-		nodeLeader.start();
-	} // end main
+        nodeLeader = new Leader(port);
+        nodeLeader.start();
+    } // end main
 
     public void nodeAdded(Node n) {
         nodeList.add(n);
@@ -150,7 +150,7 @@ public class Leader extends Thread {
 
     private void chosePayback(int clientID) {
         int amountToGive = 0;
-        int majority = 0;
+        int totalAmount = 0;
 
         System.out.println(
                 "How much money would you like to payback to the account? Entering a negative value will bring you to the previous menu.");
@@ -169,11 +169,13 @@ public class Leader extends Thread {
         for (int i = 0; i < len; i++) {
             Node n = nodeList.get(i);
             if (n.checkForClientInNode(clientID)) {
-                majority--;
-            } else {
-                majority++;
-            } // end inner else
+                totalAmount += n.getOwedAmount(clientID);
+            } // end if
         } // end for
+
+        if (totalAmount < amountToGive) {
+            System.out.println("You are trying to pay back too much money.");
+        }
     } // end chosePayback
 
 } // end Leader

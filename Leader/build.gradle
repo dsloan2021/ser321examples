@@ -21,7 +21,7 @@ task arguments {
 }
 
 //define main class
-mainClassName = 'Runner'
+mainClassName = 'Leader'
 
 task leader(type: JavaExec) {
   description 'Creates a leader node'

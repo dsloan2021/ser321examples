@@ -17,6 +17,7 @@ public class Node extends Thread {
 	private int money;
 	// public int owes;
 	public ArrayList<Client> clientList = new ArrayList<Client>();
+	public ArrayList<ClientOwesNode> clientOwesNodes = new ArrayList<ClientOwesNode>();
 
 	public Node(int money) {
 		this.money = money;
@@ -33,6 +34,9 @@ public class Node extends Thread {
 
 	public void addClient(Client c) {
 		clientList.add(c);
+
+		ClientOwesNode con = new ClientOwesNode(c.getID(), 0);
+		clientOwesNodes.add(con);
 	} // end addClient
 
 	public boolean checkForClientInNode(int clientID) {
@@ -44,5 +48,40 @@ public class Node extends Thread {
 		}
 		return inList;
 	} // end checkForClient
+
+	public int getOwedAmount(int clientID) {
+		for (int i = 0; i < clientOwesNodes.size(); i++) {
+			if (clientOwesNodes.get(i).getClientID() == clientID) {
+				return clientOwesNodes.get(i).getMoneyOwed();
+			}
+		}
+		return 0;
+	}
+
+	class ClientOwesNode {
+		private int clientID;
+		private int moneyOwed;
+
+		public ClientOwesNode(int clientID, int moneyOwed) {
+			this.clientID = clientID;
+			this.moneyOwed = moneyOwed;
+		}
+
+		public int getClientID() {
+			return clientID;
+		}
+
+		public int getMoneyOwed() {
+			return moneyOwed;
+		}
+
+		public void setClientID(int id) {
+			clientID = id;
+		}
+
+		public void setMoneyOwed(int owed) {
+			moneyOwed = owed;
+		}
+	}
 
 } // end Node
